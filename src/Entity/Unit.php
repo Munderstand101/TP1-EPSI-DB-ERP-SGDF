@@ -22,8 +22,9 @@ class Unit
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description = null;
 
-    #[ORM\ManyToOne(inversedBy: 'units')]
+    #[ORM\ManyToOne(cascade: ["persist"], inversedBy: 'units')]
     private ?Group $group_ = null;
+
 
     #[ORM\OneToMany(mappedBy: 'unit', targetEntity: Chief::class)]
     private Collection $chiefs;

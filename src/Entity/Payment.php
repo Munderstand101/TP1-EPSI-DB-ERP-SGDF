@@ -20,10 +20,10 @@ class Payment
     #[ORM\Column(nullable: true)]
     private ?int $amount = null;
 
-    #[ORM\ManyToOne(inversedBy: 'payments')]
+    #[ORM\ManyToOne(cascade: ["persist"], inversedBy: 'payments')]
     private ?PaymentType $payment_type = null;
 
-    #[ORM\ManyToOne(inversedBy: 'Payment')]
+    #[ORM\ManyToOne(cascade: ["persist"], inversedBy: 'Payment')]
     private ?Activity $activity = null;
 
     public function getId(): ?int
